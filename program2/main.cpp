@@ -58,8 +58,8 @@ Matrix processModel(const Matrix& model, GLFWwindow *window) {
     else if (isPressed(window, '-')) { trans.scale(1-SCALE, 1-SCALE, 1-SCALE); }
     else if (isPressed(window, '=')) { trans.scale(1+SCALE, 1+SCALE, 1+SCALE); }
     // TRANSLATE
-    else if (isPressed(window, GLFW_KEY_UP)) { trans.translate(0, 0, TRANS); }
-    else if (isPressed(window, GLFW_KEY_DOWN)) { trans.translate(0, 0, -TRANS); }
+    else if (isPressed(window, GLFW_KEY_UP)) { trans.translate(0, TRANS, 0); }
+    else if (isPressed(window, GLFW_KEY_DOWN)) { trans.translate(0, -TRANS, 0); }
     else if (isPressed(window, GLFW_KEY_LEFT)) { trans.translate(-TRANS, 0, 0); }
     else if (isPressed(window, GLFW_KEY_RIGHT)) { trans.translate(TRANS, 0, 0); }
     else if (isPressed(window, ',')) { trans.translate(0,0,TRANS); }
@@ -154,7 +154,7 @@ int main(void) {
     // setup camera
     Matrix projection;
     projection.perspective(45, 1, .01, 10);
-//    projection.ortho(-10,10,-10,10,-1,10);
+
     Camera camera;
     camera.projection = projection;
     camera.eye = Vector(0, 0, 3);
@@ -174,9 +174,9 @@ int main(void) {
     while (!glfwWindowShouldClose(window)) {
         // process input
         if(!smoothShading)
-            processInput(camera.projection, window);
+            processInput(obj.model, window);
         else
-            processInput(camera.projection, window);
+            processInput(obj.model, window);
         /* Render here */
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

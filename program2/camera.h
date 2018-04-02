@@ -18,11 +18,6 @@ public:
         mat.look_at(eye, origin, up);
         return mat;
     }
-    Matrix look_at(Vector &eye, Vector &origin, Vector & up ){
-        Matrix mat;
-        mat.look_at(eye, origin, up);
-        return mat;
-    }
 };
 
 #endif
