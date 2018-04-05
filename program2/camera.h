@@ -3,21 +3,53 @@
 
 #include <csci441/matrix.h>
 #include <csci441/vector.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 class Camera {
 public:
     Matrix projection;
+    Matrix view;
     Vector eye;
     Vector origin;
     Vector up;
+    Vector direction;
+    int xpos, ypos;
 
-    Camera() : eye(0,0,0), origin(0,0,0), up(0,0,0) {}
 
-    Matrix look_at() const {
+    Camera() : eye(0,0,0), origin(0,0,0), up(0,0,0), direction(0,0,0) {}
+    void setAll(Vector eye, Vector look, Vector up){
+
+    }
+
+//    Matrix look_at() const{
+//        Matrix mat;
+////        direction = eye - origin;
+//        mat.look_at(eye, direction, up);
+//
+//        return mat;
+//    }
+
+    Matrix getView() const{
         Matrix mat;
-        mat.look_at(eye, origin, up);
+        mat.look_at(eye, direction, up);
+
         return mat;
     }
+
+    void look_at(Vector pos, Vector direction1,Vector up1){
+        eye = pos;
+        direction = direction1;
+        up = up1;
+
+//        direction = eye - origin;
+        view.look_at(eye, direction, up);
+    }
+
+
+
+
+
 };
 
 #endif

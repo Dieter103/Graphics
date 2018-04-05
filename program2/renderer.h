@@ -13,7 +13,7 @@ public:
         m.shader.use();
         Uniform::set(m.shader.id(), "model", m.model);
         Uniform::set(m.shader.id(), "projection", camera.projection);
-        Uniform::set(m.shader.id(), "camera", camera.look_at());
+        Uniform::set(m.shader.id(), "camera",camera.getView());
         Uniform::set(m.shader.id(), "eye", camera.eye);
         Uniform::set(m.shader.id(), "lightPos", light);
         Uniform::set(m.shader.id(), "itModel", itModel_tmp);

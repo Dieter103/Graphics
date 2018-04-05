@@ -14,32 +14,12 @@
 
 using namespace std;
 
-template <typename T, typename N, typename C>
-
-void add_vert(T& coords, const N& x, const N& y, const N& z,
-                const C& r, const C& g, const C& b,
-                const Vector& n=Vector(1,0,0), bool with_noise=false) {
-    // adding color noise makes it easier to see before shading is implemented
-    float noise = 1-with_noise*(rand()%150)/100.;
-    coords.push_back(x);
-    coords.push_back(y);
-    coords.push_back(z);
-    coords.push_back(r*noise);
-    coords.push_back(g*noise);
-    coords.push_back(b*noise);
-
-    Vector normal = n.normalized();
-    coords.push_back(normal.x());
-    coords.push_back(normal.y());
-    coords.push_back(normal.z());
-}
-
 
 class obj{
 public:
     std::vector<float> coordinates;
 
-    void loadOBJ(const char * path){
+    void loadOBJ(const char * path, float r, float g, float b){
 
     printf("Loading OBJ file %s...\n", path);
 
@@ -63,27 +43,16 @@ public:
         int res = fscanf(file, "%s", lineHeader);
         if (res == EOF)
             break; // EOF = End Of File. Quit the loop.
-
         // else : parse lineHeader
 
         if ( strcmp( lineHeader, "v" ) == 0 ){
-
             float x,y,z;
             fscanf(file, "%f %f %f\n", &x, &y, &z );
             Vector vertex = Vector(x, y, z);
-//            add_vert(x,y,z,1,0,0,1,0,0);
-            temp_vertices.push_back(vertex);
-//            temp_normals.push_back(Vector(1,0,0));
+            temp_vertices.push_back(vertex);;
         }
-//        else if ( strcmp( lineHeader, "vt" ) == 0 ){
-//            Vector uv;
-//            fscanf(file, "%f %f\n", uv.x, uv.y );
-//            uv.y = -uv.y; // Invert V coordinate since we will only use DDS texture, which are inverted. Remove if you want to use TGA or BMP loaders.
-//            temp_uvs.push_back(uv);
-//        }
         else if ( strcmp( lineHeader, "vn" ) == 0 ){
             float x,y,z;
-
             fscanf(file, "%f %f %f\n", &x, &y, &z);
             Vector normal = Vector(x,y,z);
             temp_normals.push_back(normal);
@@ -120,8 +89,7 @@ public:
 
     // For each vertex of each triangle
     for( unsigned int i=0; i<vertexIndices.size(); i++ ) {
-        int r = 0;
-        int g = 1;
+
         // Get the indices of its attributes
         unsigned int vertexIndex = vertexIndices[i];
         unsigned int normalIndex = normalIndices[i];
@@ -141,7 +109,7 @@ public:
 //            g = 1;
 //        }
 
-        add_vertex(coordinates, vertex.values[0], vertex.values[1], vertex.values[2], r, g, 0, normal );
+        add_vertex(coordinates, vertex.values[0], vertex.values[1], vertex.values[2], r, g, b, normal );
 
         // Put the attributes in buffers
 //        out_vertices.push_back(vertex);
@@ -154,9 +122,9 @@ public:
 }
 
 
-    obj(const char * path){
-        loadOBJ(path);
-        calcVertexNormals(coordinates);
+    obj(const char * path, float r, float g, float b){
+        loadOBJ(path, r, g, b);
+//        VertexNormals(coordinates);
     }
 };
 //class obj{
