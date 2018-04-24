@@ -1,0 +1,54 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe" "cmTC_55bc3/fast"
+C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f CMakeFiles\cmTC_55bc3.dir\build.make CMakeFiles/cmTC_55bc3.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_55bc3.dir/CheckSymbolExists.c.obj
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe    -o CMakeFiles\cmTC_55bc3.dir\CheckSymbolExists.c.obj   -c C:\Users\gross\Documents\GitHub\csci441-spring2018\programs\program1\cmake-build-debug\CMakeFiles\CMakeTmp\CheckSymbolExists.c
+Linking C executable cmTC_55bc3.exe
+"C:\Program Files\JetBrains\CLion 2017.3.1\bin\cmake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_55bc3.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2017.3.1\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_55bc3.dir/objects.a
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\ar.exe cr CMakeFiles\cmTC_55bc3.dir/objects.a @CMakeFiles\cmTC_55bc3.dir\objects1.rsp
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe      -Wl,--whole-archive CMakeFiles\cmTC_55bc3.dir/objects.a -Wl,--no-whole-archive  -o cmTC_55bc3.exe -Wl,--out-implib,libcmTC_55bc3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_55bc3.dir\linklibs.rsp
+CMakeFiles\cmTC_55bc3.dir/objects.a(CheckSymbolExists.c.obj):CheckSymbolExists.c:(.rdata$.refptr.pthread_create[.refptr.pthread_create]+0x0): undefined reference to `pthread_create'
+collect2.exe: error: ld returned 1 exit status
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_55bc3.dir\build.make:99: cmTC_55bc3.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:125: cmTC_55bc3/fast] Error 2
+
+File C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe" "cmTC_a5408/fast"
+C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/mingw32-make.exe -f CMakeFiles\cmTC_a5408.dir\build.make CMakeFiles/cmTC_a5408.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a5408.dir/CheckFunctionExists.c.obj
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles\cmTC_a5408.dir\CheckFunctionExists.c.obj   -c "C:\Program Files\JetBrains\CLion 2017.3.1\bin\cmake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+Linking C executable cmTC_a5408.exe
+"C:\Program Files\JetBrains\CLion 2017.3.1\bin\cmake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_a5408.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2017.3.1\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_a5408.dir/objects.a
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\ar.exe cr CMakeFiles\cmTC_a5408.dir/objects.a @CMakeFiles\cmTC_a5408.dir\objects1.rsp
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe  -DCHECK_FUNCTION_EXISTS=pthread_create    -Wl,--whole-archive CMakeFiles\cmTC_a5408.dir/objects.a -Wl,--no-whole-archive  -o cmTC_a5408.exe -Wl,--out-implib,libcmTC_a5408.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_a5408.dir\linklibs.rsp
+C:/PROGRA~1/MINGW-~1/X86_64~1.0-W/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lpthreads
+collect2.exe: error: ld returned 1 exit status
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_a5408.dir\build.make:99: cmTC_a5408.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/gross/Documents/GitHub/csci441-spring2018/programs/program1/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:125: cmTC_a5408/fast] Error 2
+
+
