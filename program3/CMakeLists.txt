@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 2.8)
+project (glfw_example)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory(../lib/glfw ${CMAKE_CURRENT_BINARY_DIR}/glfw)
+find_package(Boost REQUIRED)
+
+include_directories(${Boost_INCLUDE_DIR})
+include_directories(../lib/glfw/include)
+include_directories(../lib/glad/include)
+include_directories(../lib/stb_image/include)
+include_directories(../lib/glm)
+include_directories(../lib/csci441/include)
+
+set(LAB lab8)
+add_executable(${LAB} main.cpp ../lib/glad/src/glad.c RayTracer.h Camera.h Color.h Ray.h Sphere.h Vector.cpp Vector.h Intersection.h Light.h objLoader.h Triangle.h RayTracer.h Object.h)
+target_link_libraries(${LAB} glfw ${GLFW_LIBRARIES} ${Boost_LIBRARIES})
+
